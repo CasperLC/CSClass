@@ -38,34 +38,30 @@ public class GameBoard implements IGameModel
      */
     public int getNextPlayer()
     {
-//        int playerTurn;
-//        if (currentPlayer == 0)
-//        {
-//            playerTurn = 0;
-//        } else if (currentPlayer == 1)
-//        {
-//            playerTurn = 1;
-//        }
         return (currentPlayer);
     }
 
     /**
-     * Attempts to let the current player play at the given coordinates. It the
+     * Attempts to let the current player play at the given coordinates. If the
      * attempt is successful the current player has ended his turn and it is the
      * next players turn.
+     * 
+     * If play attempt is successful, counts the play as 1 turn(countTurn).
+     * If play attempt is successful, adds player's number to the corresponding
+     * gameBoard multi-array to keep track of X/O's.
      *
      * @param col column to place a marker in.
      * @param row row to place a marker in.
-     * @return true if the move is accepted, otherwise false. If gameOver ==
+     * @return true if the move is accepted, otherwise false. If isGameOver ==
      * true this method will always return false.
      */
     public boolean play(int col, int row)
     {
-//        if (isGameOver() == false)
-//        {
-//            return false;
-//        }
-        if (gameBoard[col][row] == -1 && isGameOver() == false)
+        if (isGameOver() == true)
+        {
+            return false;
+        }
+        else if (gameBoard[col][row] == -1 && isGameOver() == false)
         {
             if (currentPlayer == 0)
             {
@@ -84,6 +80,14 @@ public class GameBoard implements IGameModel
         return false;
     }
 
+    /**
+     * Checks the board for a winner, if either player meets the conditions for
+     * winning or 9 turns has passed(meaning the board is full) it will tell us
+     * that the game has ended. Also if a player wins, sets playerWon = player's int id.
+     * 
+     * @return true if the board is full or a player meets a win condition, else
+     * it will return false.
+     */
     public boolean isGameOver()
     {
         for (int j = 0; j < gameBoard.length; j++)
