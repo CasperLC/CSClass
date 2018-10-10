@@ -15,10 +15,11 @@ import java.util.ArrayList;
 public class GameBoard implements IGameModel
 {
 
-    private int currentPlayer = 0;
-    private int countTurns = 0;
-    private int playerWon;
-    private int[][] gameBoard =
+    private int currentPlayer = 0; // The int Id for the current player (0/1).
+    private int countTurns = 0; // counts the turns taken.
+    private int playerWon; // is given the winning players int Id as value.
+    // gameBoard initializes the gameboard in a 3x3 two-dimensional array with the values -1.
+    private int[][] gameBoard = 
     {
         {
             -1, -1, -1
@@ -122,9 +123,9 @@ public class GameBoard implements IGameModel
     }
 
     /**
-     * Gets the id of the winner, -1 if its a draw.
+     * Gets the Id of the winner, -1 if its a draw.
      *
-     * @return int id of winner, or -1 if draw.
+     * @return int Id of winner, or -1 if draw.
      */
     public int getWinner()
     {
