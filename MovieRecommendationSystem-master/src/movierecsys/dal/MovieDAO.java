@@ -5,6 +5,10 @@
  */
 package movierecsys.dal;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.List;
 import movierecsys.be.Movie;
 
@@ -14,16 +18,36 @@ import movierecsys.be.Movie;
  */
 public class MovieDAO
 {
+    
+    private static final String SOURCE = "data/movie_titles.txt";
 
     /**
      * Gets a list of all movies in the persistence storage.
      *
      * @return List of movies.
      */
-    private List<Movie> getAllMovies()
+    public List<Movie> getAllMovies() throws IOException
     {
-        //TODO Get all movies
-        return null;
+        File file = new File(SOURCE);
+        if(!file.exists())
+        {
+            System.out.println(file.getAbsolutePath());
+            throw new IOException("File not found");
+        }
+        List<Movie> allMovies = new ArrayList<>();
+        
+        List<String> lines = Files.readAllLines(file.toPath());
+        for (String line : lines)
+        {
+            String[] columns = line.split(",");
+            int id = Integer.parseInt(columns[0]);
+            int year = Integer.parseInt(columns[1]);
+            String title = columns[2];
+            
+            Movie movie = new Movie(id, year, title);
+            allMovies.add(movie);
+        }
+        return allMovies;
     }
 
     /**
