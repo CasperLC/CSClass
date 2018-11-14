@@ -29,15 +29,20 @@ public class FileReaderTester
         RatingDAO ratingDAO = new RatingDAO();
         UserDAO userDAO = new UserDAO();
         MovieDAO movieDao = new MovieDAO();
-//        ratingDAO.createRating(new Rating(17769, 123456, 5));
-//        ratingDAO.getAllRatings();
-//        
-//        ratingDAO.updateRating(new Rating(8,1744889,-3));
-//        List<Rating> testrating = ratingDAO.getRatings(new User(1744889,"test"));
-//        for (Rating rating : testrating) {
-//            System.out.println(rating.toString());
+//        ratingDAO.createRating(new Rating(17764, 123456, 3));
+//        ratingDAO.createRating(new Rating(17765, 123456, 1));
+//        ratingDAO.createRating(new Rating(17766, 123456, -5));
+//        ratingDAO.updateRating(new Rating(17769, 123456, 3));
+//        ratingDAO.deleteRating(new Rating(17769,123456,5));
+        List<Rating> userOneRate = ratingDAO.getRatings(new User(123456,"Test User"));
+        for (Rating rating : userOneRate) {
+            System.out.println(""+rating.toString());
+        }
+//            
+//        List<Rating> allRates = ratingDAO.getAllRatings();
+//        for (Rating allRate : allRates) {
+//            System.out.println(""+allRate.getRating());
 //        }
-//        System.out.println(ratingDAO.getRatings(new User(123456,"test")));
 //       List<User> allUse = userDAO.getAllUsers();
 //       userDAO.createUser("TestUser");
 //        userDAO.updateUser(new User(6, "TestUser: Now Updated"));
