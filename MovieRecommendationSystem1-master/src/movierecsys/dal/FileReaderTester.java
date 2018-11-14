@@ -34,10 +34,10 @@ public class FileReaderTester
 //        ratingDAO.createRating(new Rating(17766, 123456, -5));
 //        ratingDAO.updateRating(new Rating(17769, 123456, 3));
 //        ratingDAO.deleteRating(new Rating(17769,123456,5));
-        List<Rating> userOneRate = ratingDAO.getRatings(new User(123456,"Test User"));
-        for (Rating rating : userOneRate) {
-            System.out.println(""+rating.toString());
-        }
+//        List<Rating> userOneRate = ratingDAO.getRatings(new User(123456,"Test User"));
+//        for (Rating rating : userOneRate) {
+//            System.out.println(""+rating.toString());
+//        }
 //            
 //        List<Rating> allRates = ratingDAO.getAllRatings();
 //        for (Rating allRate : allRates) {
