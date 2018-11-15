@@ -22,109 +22,92 @@ import movierecsys.dal.UserDAO;
  *
  * @author Caspe
  */
-public class MRSManager implements OwsLogicFacade
-{
+public class MRSManager implements OwsLogicFacade {
 
     private final MovieDAO movieDAO;
 //    private final RatingDAO ratingDAO;
 //    private final UserDAO userDAO;
 
-    public MRSManager()
-    {
+    public MRSManager() {
         movieDAO = new MovieDAO();
     }
 
     @Override
-    public List<Rating> getRecommendedMovies(User user)
-    {
+    public List<Rating> getRecommendedMovies(User user) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Movie> getAllMovies() throws MovieRecSysException
-    {
-        try
-        {
+    public List<Movie> getAllMovies() throws MovieRecSysException {
+        try {
             return movieDAO.getAllMovies();
-        } catch (IOException ex)
-        {
+        } catch (IOException ex) {
             throw new MovieRecSysException("Couldn't read all movies: " + ex.getMessage());
         }
     }
 
     @Override
-    public List<Movie> getAllTimeTopRatedMovies()
-    {
+    public List<Movie> getAllTimeTopRatedMovies() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Movie> getMovieReccomendations(User user)
-    {
+    public List<Movie> getMovieReccomendations(User user) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Movie> searchMovies(String query) throws MovieRecSysException
-    {
+    public List<Movie> searchMovies(String query) throws MovieRecSysException {
         List<Movie> movieSearch = new ArrayList<>();
-        try
-        {
+        try {
             List<Movie> allMovies = movieDAO.getAllMovies();
-            for (Movie allMovy : allMovies)
-            {
-                if (query.toLowerCase() == allMovy.getTitle().toLowerCase())
-                {
-                    movieSearch.add(new Movie(allMovy.getId(),allMovy.getYear(),allMovy.getTitle()));
+            if (query.isEmpty()) {
+                movieSearch.addAll(allMovies);
+            }
+            for (Movie allMovy : allMovies) {
+                if (query.toLowerCase().equals(allMovy.getTitle().toLowerCase())) {
+                    movieSearch.add(new Movie(allMovy.getId(), allMovy.getYear(), allMovy.getTitle()));
                 }
 
             }
-        } catch (IOException ex)
-        {
+        } catch (IOException ex) {
             throw new MovieRecSysException("Couldn't read all movies: " + ex.getMessage());
         }
         return movieSearch;
     }
 
     @Override
-    public Movie createMovie(int year, String title)
-    {
+    public Movie createMovie(int year, String title) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void updateMovie(Movie movie)
-    {
+    public void updateMovie(Movie movie) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deleteMovie(Movie movie)
-    {
+    public void deleteMovie(Movie movie) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void rateMovie(Movie movie, User user, int rating)
-    {
+    public void rateMovie(Movie movie, User user, int rating) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public User createNewUser(String name)
-    {
+    public User createNewUser(String name) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public User getUserById(int id)
-    {
+    public User getUserById(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<User> getAllUsers()
-    {
+    public List<User> getAllUsers() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

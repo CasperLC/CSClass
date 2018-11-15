@@ -21,13 +21,11 @@ import movierecsys.gui.model.MovieModel;
  *
  * @author pgn
  */
-public class MovieRecController implements Initializable
-{
+public class MovieRecController implements Initializable {
 
     /**
      * The TextField containing the URL of the targeted website.
      */
-    @FXML
     private TextField txtMovieSearcjh;
 
     /**
@@ -39,36 +37,38 @@ public class MovieRecController implements Initializable
     private MovieModel movieModel;
     @FXML
     private Button btnSearch;
+    @FXML
+    private TextField txtMovieSearch;
 
-    public MovieRecController()
-    {
-        try
-        {
+    public MovieRecController() {
+        try {
             movieModel = new MovieModel();
-        } catch (MovieRecSysException ex)
-        {
+        } catch (MovieRecSysException ex) {
             displayError(ex);
             System.exit(0);
         }
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb)
-    {
+    public void initialize(URL url, ResourceBundle rb) {
         lstMovies.setItems(movieModel.getMovies());
 
     }
 
-    private void displayError(MovieRecSysException ex)
-    {
+    private void displayError(MovieRecSysException ex) {
         System.out.println(ex.getMessage());
         ex.printStackTrace();
     }
 
     @FXML
-    private void btnSearchEnter(ActionEvent event) throws MovieRecSysException
-    {
-        String searchInput = txtMovieSearcjh.getText();
+    private void btnSearchEnter(ActionEvent event) throws MovieRecSysException {
+        String searchInput = txtMovieSearch.getText();
+        lstMovies.setItems(movieModel.getSearch(searchInput));
+    }
+
+    @FXML
+    private void txtEnterSearch(ActionEvent event) throws MovieRecSysException {
+        String searchInput = txtMovieSearch.getText();
         lstMovies.setItems(movieModel.getSearch(searchInput));
     }
 

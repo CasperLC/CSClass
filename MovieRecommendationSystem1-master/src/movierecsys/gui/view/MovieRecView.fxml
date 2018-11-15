@@ -30,8 +30,8 @@
    <center>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="txtMovieSearcjh" prefHeight="25.0" prefWidth="410.0" promptText="search movies" />
-            <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#btnSearchEnter" text="Button" />
+            <TextField fx:id="txtMovieSearch" onAction="#txtEnterSearch" prefHeight="25.0" prefWidth="410.0" promptText="search movies" />
+            <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#btnSearchEnter" text="Search" />
             <ListView fx:id="lstMovies" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
