@@ -45,7 +45,7 @@ public interface OwsLogicFacade
      * @param query The search query
      * @return A list of movies that matches the search query.
      */
-    List<Movie> searchMovies(String query);
+    List<Movie> searchMovies(String query) throws MovieRecSysException;
 
     /**
      * Create and add a new movie to the systems storage.

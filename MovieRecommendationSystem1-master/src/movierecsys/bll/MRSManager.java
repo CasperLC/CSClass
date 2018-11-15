@@ -6,12 +6,17 @@
 package movierecsys.bll;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import movierecsys.be.Movie;
 import movierecsys.be.Rating;
 import movierecsys.be.User;
 import movierecsys.bll.exception.MovieRecSysException;
 import movierecsys.dal.MovieDAO;
+import movierecsys.dal.RatingDAO;
+import movierecsys.dal.UserDAO;
 
 /**
  *
@@ -21,6 +26,8 @@ public class MRSManager implements OwsLogicFacade
 {
 
     private final MovieDAO movieDAO;
+//    private final RatingDAO ratingDAO;
+//    private final UserDAO userDAO;
 
     public MRSManager()
     {
@@ -58,9 +65,25 @@ public class MRSManager implements OwsLogicFacade
     }
 
     @Override
-    public List<Movie> searchMovies(String query)
+    public List<Movie> searchMovies(String query) throws MovieRecSysException
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Movie> movieSearch = new ArrayList<>();
+        try
+        {
+            List<Movie> allMovies = movieDAO.getAllMovies();
+            for (Movie allMovy : allMovies)
+            {
+                if (query.toLowerCase() == allMovy.getTitle().toLowerCase())
+                {
+                    movieSearch.add(new Movie(allMovy.getId(),allMovy.getYear(),allMovy.getTitle()));
+                }
+
+            }
+        } catch (IOException ex)
+        {
+            throw new MovieRecSysException("Couldn't read all movies: " + ex.getMessage());
+        }
+        return movieSearch;
     }
 
     @Override

@@ -31,6 +31,17 @@ public class MovieModel
 
     }
 
+    public ObservableList<Movie> getSearch(String tekst) throws MovieRecSysException
+    {
+
+        ObservableList<Movie> searchM;
+        searchM = FXCollections.observableArrayList();
+        searchM.addAll(logiclayer.searchMovies(tekst));
+//        searchM.add(new Movie(9999, 2010, "Test"));
+
+        return searchM;
+    }
+
     public ObservableList<Movie> getMovies()
     {
         return movies;
