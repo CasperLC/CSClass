@@ -16,6 +16,7 @@ import movierecsys.bll.exception.MovieRecSysException;
  *
  * @author Bruger
  */
+
 public class MovieModel1 {
 
     private Movie selected;

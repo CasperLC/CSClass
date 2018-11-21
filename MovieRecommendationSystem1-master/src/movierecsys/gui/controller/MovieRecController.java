@@ -31,7 +31,8 @@ import movierecsys.gui.model.MovieModel1;
  *
  * @author pgn
  */
-public class MovieRecController implements Initializable {
+public class MovieRecController implements Initializable
+{
 
     /**
      * The TextField containing the URL of the targeted website.
@@ -87,19 +88,22 @@ public class MovieRecController implements Initializable {
         }
     }
 
-    private void displayError(MovieRecSysException ex) {
+    private void displayError(MovieRecSysException ex)
+    {
         System.out.println(ex.getMessage());
         ex.printStackTrace();
     }
 
     @FXML
-    private void btnSearchEnter(ActionEvent event) throws MovieRecSysException {
+    private void btnSearchEnter(ActionEvent event) throws MovieRecSysException
+    {
         String searchInput = txtMovieSearch.getText();
         lstMovies.setItems(model.getSearch(searchInput));
     }
 
     @FXML
-    private void txtEnterSearch(ActionEvent event) throws MovieRecSysException {
+    private void txtEnterSearch(ActionEvent event) throws MovieRecSysException
+    {
         String searchInput = txtMovieSearch.getText();
         lstMovies.setItems(model.getSearch(searchInput));
     }
@@ -123,8 +127,6 @@ public class MovieRecController implements Initializable {
     private void goodMain(ActionEvent event)
     {
     }
-    
-   
 
     @FXML
     private void superGoodMain(ActionEvent event)
@@ -138,13 +140,13 @@ public class MovieRecController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/movierecsys/gui/view/RatingRecView.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        stage.setScene (scene);
-        
+        stage.setScene(scene);
+
         RatingRecViewController ratingRecViewController = loader.getController();
         model.setSelected(lstMovies.getSelectionModel().getSelectedItem());
         ratingRecViewController.setModel(model);
     }
-    
+
     @FXML
     private void movieOptionScreenEnter(ActionEvent event) throws IOException
     {
@@ -152,8 +154,8 @@ public class MovieRecController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/movierecsys/gui/view/MovieOptionRecView.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        stage.setScene (scene);
-        
+        stage.setScene(scene);
+
         MovieOptionRecViewController optionRecViewController = loader.getController();
         model.setSelected(lstMovies.getSelectionModel().getSelectedItem());
         optionRecViewController.setModelOption(model);
