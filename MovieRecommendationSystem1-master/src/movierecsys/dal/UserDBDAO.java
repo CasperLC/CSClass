@@ -42,7 +42,7 @@ public class UserDBDAO implements IUserList
 
             idString = "" + getNextAvailableUserId();
 
-            String sqlString = "INSERT INTO User(id,name) VALUES("
+            String sqlString = "INSERT INTO UserList(id,name) VALUES("
                     + idString + ","
                     + nameString + ");";
             statement.executeUpdate(sqlString);
@@ -63,7 +63,7 @@ public class UserDBDAO implements IUserList
         ds.setDatabaseName("MRSystem");
         ds.setUser("CS2018A_7");
         ds.setPassword("CS2018A_7");
-        String sqlQuery = "DELETE FROM User WHERE id=" + user.getId();
+        String sqlQuery = "DELETE FROM UserList WHERE id=" + user.getId();
 
         try (Connection con = ds.getConnection())
         {
@@ -201,7 +201,7 @@ public class UserDBDAO implements IUserList
         try (Connection con = ds.getConnection())
         {
             Statement statement = con.createStatement();
-            ResultSet rs = statement.executeQuery("UPDATE User SET name="
+            ResultSet rs = statement.executeQuery("UPDATE UserList SET name="
                     + "'" + user.getName() + "',"
                     + "WHERE id=" + user.getId());
             while (rs.next())

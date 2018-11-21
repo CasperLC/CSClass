@@ -43,6 +43,7 @@ public class FileReaderTester
 //        movieDB.createMovie(2004, "Test Movie4");
 //        movieDB.getMovie(1);
 //        userDB.getAllUsers();
+        userDB.updateUser(new User(7,"Test Update"));
 
     }
 
