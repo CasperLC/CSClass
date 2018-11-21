@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
@@ -18,5 +19,6 @@
             <Button fx:id="btnRatingSuperGoodOption" mnemonicParsing="false" onAction="#ratingSuperGoodOption" text="SuperGood" />
          </children>
       </HBox>
+      <ListView fx:id="lstMovieRateChange" layoutX="35.0" layoutY="98.0" prefHeight="38.0" prefWidth="404.0" />
    </children>
 </AnchorPane>
