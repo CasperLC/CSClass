@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane id="AnchorPane" fx:id="RatingBorderPane" prefHeight="604.0" prefWidth="472.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movierecsys.gui.controller.RatingRecViewController">
+   <children>
+      <Button fx:id="btnXRatingBack" layoutX="429.0" layoutY="14.0" mnemonicParsing="false" onAction="#xRatingBack" prefHeight="0.0" prefWidth="29.0" text="X" />
+      <Button fx:id="btnChangeRating" layoutX="179.0" layoutY="182.0" mnemonicParsing="false" onAction="#btnChangeRating" text="Change rating" />
+      <Button fx:id="btnDeleteRating" layoutX="183.0" layoutY="344.0" mnemonicParsing="false" onAction="#btndeleteRating" text="Delete rating" />
+      <HBox layoutX="74.0" layoutY="244.0">
+         <children>
+            <Button fx:id="btnRatingSuperBadOption" mnemonicParsing="false" onAction="#superBadRatingOption" text="SuperBad" />
+            <Button fx:id="btnRatingBadOption" mnemonicParsing="false" onAction="#ratingBadOption" text="bad" />
+            <Button fx:id="btnRatingNeutralOption" mnemonicParsing="false" onAction="#ratingNeutralOption" text="neutral" />
+            <Button fx:id="btnRatingGoodOption" mnemonicParsing="false" onAction="#ratingGoodOption" text="good" />
+            <Button fx:id="btnRatingSuperGoodOption" mnemonicParsing="false" onAction="#ratingSuperGoodOption" text="SuperGood" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

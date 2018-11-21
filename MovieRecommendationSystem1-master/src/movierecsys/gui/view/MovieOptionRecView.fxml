@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="MovieBorderPane" prefHeight="604.0" prefWidth="472.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movierecsys.gui.controller.MovieOptionRecViewController">
+   <children>
+      <Button fx:id="btnXMovieBack" layoutX="428.0" layoutY="14.0" mnemonicParsing="false" onAction="#xMovieBack" prefHeight="17.0" prefWidth="26.0" text="X" />
+      <Button fx:id="btnAddMovieOption" layoutX="190.0" layoutY="199.0" mnemonicParsing="false" onAction="#btnaddMovie" text="Add movie" />
+      <Button fx:id="btnRemoveMovieOption" layoutX="177.0" layoutY="311.0" mnemonicParsing="false" onAction="#btnRemoveMovie" text="Remove movie" />
+      <TextField fx:id="txtMovieAdd" layoutX="9.0" layoutY="94.0" onAction="#movieAddText" prefHeight="31.0" prefWidth="456.0" promptText="add movie title" />
+      <TextField fx:id="txtMovieYear" layoutX="144.0" layoutY="138.0" onAction="#movieYearText" promptText="Enter year of movie" />
+   </children>
+</AnchorPane>
