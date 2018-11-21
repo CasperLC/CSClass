@@ -31,6 +31,11 @@ public class MovieModel
 
     }
 
+    public void createMovie(int year, String title) throws MovieRecSysException
+    {
+        logiclayer.createMovie(year, title);
+    }
+
     public ObservableList<Movie> getSearch(String tekst) throws MovieRecSysException
     {
 
