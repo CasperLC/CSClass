@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -44,6 +45,8 @@ public class RatingRecViewController implements Initializable
     private Button btnRatingGoodOption;
     @FXML
     private Button btnRatingSuperGoodOption;
+    @FXML
+    private ListView<?> lstMovieRateChange;
 
     /**
      * Initializes the controller class.

@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import movierecsys.dal.MovieDAO;
 
 /**
  * FXML Controller class
@@ -59,23 +60,31 @@ public class MovieOptionRecViewController implements Initializable
     }
 
     @FXML
-    private void btnaddMovie(ActionEvent event)
+    private void btnaddMovie(ActionEvent event) throws IOException
     {
+        String movieTitle = txtMovieAdd.getText();
+        int movieYear = Integer.parseInt(txtMovieYear.getText());
+        MovieDAO moviedao = new MovieDAO();
+        moviedao.createMovie(movieYear, movieTitle);
+        
     }
 
     @FXML
     private void btnRemoveMovie(ActionEvent event)
     {
+        
     }
 
     @FXML
     private void movieAddText(ActionEvent event)
     {
+        
     }
 
     @FXML
     private void movieYearText(ActionEvent event)
     {
+       
     }
     
 }
