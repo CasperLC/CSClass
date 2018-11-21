@@ -29,7 +29,7 @@ import movierecsys.be.User;
  *
  * @author pgn
  */
-public class UserDAO
+public class UserDAO implements IUserList
 {
     private static final String USER_SOURCE = "data/users.txt";
     
@@ -37,6 +37,7 @@ public class UserDAO
      * Gets a list of all known users.
      * @return List of users.
      */
+    @Override
     public List<User> getAllUsers() throws FileNotFoundException, IOException
     {
         List<User> listOfUsers = new ArrayList<>();
@@ -84,6 +85,7 @@ public class UserDAO
      * @param id The ID of the user.
      * @return The User with the ID.
      */
+    @Override
     public User getUser(int id) throws IOException
     {
         List<User> getUsers = getAllUsers();
@@ -102,6 +104,7 @@ public class UserDAO
      * Updates a user so the persistence storage reflects the given User object.
      * @param user The updated user.
      */
+    @Override
     public void updateUser(User user) throws IOException
     {
         File tmp = new File("data/tmp_userslist.txt");
@@ -135,6 +138,7 @@ public class UserDAO
      * storage.
      * @throws java.io.IOException
      */
+    @Override
     public User createUser(String name) throws IOException
     {
         Path path = new File(USER_SOURCE).toPath();
@@ -156,6 +160,7 @@ public class UserDAO
      * @return lowest available id
      * @throws java.io.IOException
      */
+    @Override
     public int getNextAvailableUserId() throws IOException
     {
         int availableId = 1;
@@ -192,6 +197,7 @@ public class UserDAO
      * @param movie The user to delete.
      * @throws java.io.IOException
      */
+    @Override
     public void deleteUser(User user) throws IOException
     {
         File inputFile = new File(USER_SOURCE);
@@ -231,6 +237,7 @@ public class UserDAO
      *
      * @throws IOException
      */
+    @Override
     public void sortUsers() throws IOException
     {
         File tmp = new File("data/tmp_usersort.txt");

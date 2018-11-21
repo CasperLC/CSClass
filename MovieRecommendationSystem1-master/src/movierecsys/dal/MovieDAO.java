@@ -28,7 +28,7 @@ import movierecsys.be.Movie;
  *
  * @author pgn
  */
-public class MovieDAO
+public class MovieDAO implements IMovieRepository
 {
 
     //tester1234
@@ -40,6 +40,7 @@ public class MovieDAO
      * @return List of movies.
      * @throws java.io.FileNotFoundException
      */
+    @Override
     public List<Movie> getAllMovies() throws FileNotFoundException, IOException
     {
         List<Movie> allMovies = new ArrayList<>();
@@ -92,6 +93,7 @@ public class MovieDAO
      * storage.
      * @throws java.io.IOException
      */
+    @Override
     public Movie createMovie(int releaseYear, String title) throws IOException
     {
         Path path = new File(MOVIE_SOURCE).toPath();
@@ -113,6 +115,7 @@ public class MovieDAO
      * @return lowest available id
      * @throws java.io.IOException
      */
+    @Override
     public int getNextAvailableId() throws IOException
     {
         int availableId = 1;
@@ -149,6 +152,7 @@ public class MovieDAO
      * @param movie The movie to delete.
      * @throws java.io.IOException
      */
+    @Override
     public void deleteMovie(Movie movie) throws IOException
     {
         File inputFile = new File(MOVIE_SOURCE);
@@ -189,6 +193,7 @@ public class MovieDAO
      *
      * @param movie The updated movie.
      */
+    @Override
     public void updateMovie(Movie movie) throws IOException
     {
         File tmp = new File("data/tmp_movies.txt");
@@ -219,6 +224,7 @@ public class MovieDAO
      * @param id ID of the movie.
      * @return A Movie object.
      */
+    @Override
     public Movie getMovie(int id) throws IOException
     {
         List<Movie> getMovieList = getAllMovies();
@@ -239,6 +245,7 @@ public class MovieDAO
      *
      * @throws IOException
      */
+    @Override
     public void sortMovies() throws IOException
     {
         File tmp = new File("data/tmp.txt");
@@ -263,6 +270,7 @@ public class MovieDAO
      * @param movie
      * @return a string consisting of a movie object's id,releaseYear,title
      */
+    @Override
     public String movieToString(Movie movie)
     {
         Movie dMovie = movie;

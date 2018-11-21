@@ -33,7 +33,7 @@ import movierecsys.be.User;
  *
  * @author pgn
  */
-public class RatingDAO {
+public class RatingDAO implements IRatingList {
 
     private static final String RATING_SOURCE = "data/user_ratings";
     private static final String RATINGTXT_SOURCE = "data/ratings.txt";
@@ -43,6 +43,7 @@ public class RatingDAO {
      * Persists the given rating.
      * @param rating the rating to persist.
      */
+    @Override
     public void createRating(Rating rating) throws IOException
     {
         Path path = new File(RATINGTXT_SOURCE).toPath();
@@ -59,6 +60,7 @@ public class RatingDAO {
      * Updates the rating to reflect the given object.
      * @param rating The updated rating to persist.
      */
+    @Override
     public void updateRating(Rating rating) throws IOException
     {
         File tmp = new File("data/tmp_movies.txt");
@@ -82,6 +84,7 @@ public class RatingDAO {
      * Removes the given rating.
      * @param rating 
      */
+    @Override
     public void deleteRating(Rating rating) throws IOException
     {
         File inputFile = new File(RATINGTXT_SOURCE);
@@ -120,6 +123,7 @@ public class RatingDAO {
      * Gets all ratings from all users.
      * @return List of all ratings.
      */
+    @Override
     public List<Rating> getAllRatings() throws FileNotFoundException, IOException
     {
         List<Rating> allRatings = new ArrayList<>();
@@ -161,6 +165,7 @@ public class RatingDAO {
      * @param user The user 
      * @return The list of ratings.
      */
+    @Override
     public List<Rating> getRatings(User user) throws IOException
     {
         List<Rating> getRatingList = getAllRatings();
@@ -181,6 +186,7 @@ public class RatingDAO {
      *
      * @throws IOException
      */
+    @Override
     public void sortRatings() throws IOException
     {
         File tmp = new File("data/tmp.txt");
