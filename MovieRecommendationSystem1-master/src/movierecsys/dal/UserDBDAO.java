@@ -101,7 +101,7 @@ public class UserDBDAO implements IUserList
             {
                 int id = rs.getInt("id");
                 String name = rs.getNString("name");
-                users.add(new User(id,name));
+                users.add(new User(id, name));
             }
         } catch (SQLException ex)
         {
@@ -130,19 +130,32 @@ public class UserDBDAO implements IUserList
             } else if (availableId < allUsersNextId.get(i).getId() && allUsersNextId.get(i).getId() - 1 != lastCounted)
             {
                 boolean free = true;
+                boolean avail = true;
                 for (User user : allUsersNextId)
                 {
-
-                    if (user.getId() == lastCounted+1)
+                    if (lastCounted == 0 && user.getId() == availableId)
                     {
-                        availableId = 1;
+                        availableId++;
+                        lastCounted++;
+                    }
+                    if (user.getId() == lastCounted + 1)
+                    {
+//                        availableId = 1;
                         free = false;
                     }
+                    if (free = true)
+                    {
+                        if (allUsersNextId.get(i).getId() - 1 == user.getId() && lastCounted+1 == user.getId())
+                        {
+                            avail = false;
+                        }
+                    }
                 }
-                if(free=true){
-                    availableId = allUsersNextId.get(i).getId() - 1;
+                if (free == true && avail == true)
+                {
+                    availableId = allUsersNextId.get(i).getId() -1;
                 }
-                
+
                 return availableId;
             } else if (availableId == 1 && allUsersNextId.get(i).getId() == allUsersNextId.size())
             {
@@ -163,7 +176,7 @@ public class UserDBDAO implements IUserList
         ds.setUser("CS2018A_7");
         ds.setPassword("CS2018A_7");
 
-        User theUser = new User(0,"");
+        User theUser = new User(0, "");
 
         try (Connection con = ds.getConnection())
         {
@@ -174,7 +187,7 @@ public class UserDBDAO implements IUserList
             {
                 String name = rs.getNString("name");
                 theUser = new User(id, name);
-                System.out.println(""+theUser.toString());
+                System.out.println("" + theUser.toString());
             }
         } catch (SQLException ex)
         {
@@ -202,7 +215,7 @@ public class UserDBDAO implements IUserList
         {
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("UPDATE UserList SET name="
-                    + "'" + user.getName() + "',"
+                    + "'" + user.getName() + "'"
                     + "WHERE id=" + user.getId());
             while (rs.next())
             {
@@ -216,5 +229,5 @@ public class UserDBDAO implements IUserList
             ex.printStackTrace();
         }
     }
-    
+
 }

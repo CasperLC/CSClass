@@ -78,7 +78,16 @@ public class MRSManager implements OwsLogicFacade {
 
     @Override
     public Movie createMovie(int year, String title) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Movie newMovie = null;
+        try
+        {
+            newMovie = movieDAO.createMovie(year, title);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(MRSManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return newMovie;
     }
 
     @Override
