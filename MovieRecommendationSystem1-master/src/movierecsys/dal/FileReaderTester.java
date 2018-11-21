@@ -35,6 +35,7 @@ public class FileReaderTester
         MovieDAO movieDao = new MovieDAO();
         MovieDBDAO movieDB = new MovieDBDAO();
         UserDBDAO userDB = new UserDBDAO();
+        RatingDBDAO ratingDB = new RatingDBDAO();
 //        mitigateMovies();
 //        mitigateUsers();
 //        mitigateRatings();
@@ -43,7 +44,20 @@ public class FileReaderTester
 //        movieDB.createMovie(2004, "Test Movie4");
 //        movieDB.getMovie(1);
 //        userDB.getAllUsers();
-        userDB.updateUser(new User(7,"Test Update"));
+//        userDB.updateUser(new User(7,"Georgi Facello"));
+//        userDB.createUser("Test User");
+//        userDB.deleteUser(new User(6, "Test"));
+//        userDB.createUser(userDB.getUser(7).getName());
+//        ratingDB.updateRating(new Rating(8, 1744889, -5));
+//        ratingDB.createRating(new Rating(17770, 99999, 5));
+//        ratingDB.deleteRating(new Rating(17770, 99999, 5));
+//        ratingDB.getRatings(new User(123456, "Test"));
+//        List<Rating> userRate = ratingDB.getRatings(new User(123456, "Test"));
+//        for (Rating rating : userRate)
+//        {
+//            System.out.println(""+rating.toString());
+//        }
+
 
     }
 

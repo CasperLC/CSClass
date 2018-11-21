@@ -25,11 +25,13 @@ import movierecsys.dal.UserDAO;
 public class MRSManager implements OwsLogicFacade {
 
     private final MovieDAO movieDAO;
-//    private final RatingDAO ratingDAO;
-//    private final UserDAO userDAO;
+    private final RatingDAO ratingDAO;
+    private final UserDAO userDAO;
 
     public MRSManager() {
         movieDAO = new MovieDAO();
+        userDAO = new UserDAO();
+        ratingDAO = new RatingDAO();
     }
 
     @Override
@@ -78,37 +80,88 @@ public class MRSManager implements OwsLogicFacade {
 
     @Override
     public Movie createMovie(int year, String title) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Movie newMovie = null;
+        try
+        {
+            newMovie = movieDAO.createMovie(year, title);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(MRSManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return newMovie;
     }
 
     @Override
     public void updateMovie(Movie movie) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try
+        {
+            movieDAO.updateMovie(movie);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(MRSManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void deleteMovie(Movie movie) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try
+        {
+            movieDAO.deleteMovie(movie);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(MRSManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void rateMovie(Movie movie, User user, int rating) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try
+        {
+            ratingDAO.createRating(new Rating(movie.getId(), user.getId(), rating));
+        } catch (IOException ex)
+        {
+            Logger.getLogger(MRSManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public User createNewUser(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        User nUser = null;
+        try
+        {
+            nUser = userDAO.createUser(name);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(MRSManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nUser;
     }
 
     @Override
     public User getUserById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        User theUser = null;
+        try
+        {
+            theUser = userDAO.getUser(id);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(MRSManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return theUser;
     }
 
     @Override
     public List<User> getAllUsers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<User> allUsersList = new ArrayList<>();
+        try
+        {
+            allUsersList.addAll(userDAO.getAllUsers());
+        } catch (IOException ex)
+        {
+            Logger.getLogger(MRSManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return allUsersList;
     }
 
 }
