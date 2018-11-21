@@ -15,10 +15,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import movierecsys.dal.MovieDAO;
+import movierecsys.gui.model.MovieModel1;
 
 /**
  * FXML Controller class
@@ -40,6 +42,10 @@ public class MovieOptionRecViewController implements Initializable
     private TextField txtMovieAdd;
     @FXML
     private TextField txtMovieYear;
+    @FXML
+    private Label lblMovieOption;
+    
+    private MovieModel1 modelOption;
 
     /**
      * Initializes the controller class.
@@ -85,6 +91,12 @@ public class MovieOptionRecViewController implements Initializable
     private void movieYearText(ActionEvent event)
     {
        
+    }
+
+    void setModelOption(MovieModel1 model)
+    {
+        this.modelOption = model;
+        lblMovieOption.setText(model.getSelected().getTitle());
     }
     
 }

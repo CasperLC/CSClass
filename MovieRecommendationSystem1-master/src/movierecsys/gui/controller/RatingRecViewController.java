@@ -15,9 +15,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import movierecsys.gui.model.MovieModel1;
 
 /**
  * FXML Controller class
@@ -46,8 +48,11 @@ public class RatingRecViewController implements Initializable
     @FXML
     private Button btnRatingSuperGoodOption;
     @FXML
-    private ListView<?> lstMovieRateChange;
+    private Label lblChangeRating;
 
+    
+    private MovieModel1 model;
+    
     /**
      * Initializes the controller class.
      */
@@ -66,7 +71,7 @@ public class RatingRecViewController implements Initializable
         stage.setScene(scene);
         
     }
-
+      
     @FXML
     private void btnChangeRating(ActionEvent event)
     {
@@ -100,6 +105,17 @@ public class RatingRecViewController implements Initializable
     @FXML
     private void ratingSuperGoodOption(ActionEvent event)
     {
+    }
+
+    void setMovie()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void setModel(MovieModel1 model)
+    {
+        this.model = model;
+        lblChangeRating.setText(model.getSelected().getTitle());
     }
     
 }

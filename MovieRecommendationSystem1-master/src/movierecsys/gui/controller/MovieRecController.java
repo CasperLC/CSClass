@@ -5,6 +5,7 @@
  */
 package movierecsys.gui.controller;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,6 +23,7 @@ import javafx.stage.Stage;
 import movierecsys.be.Movie;
 import movierecsys.bll.exception.MovieRecSysException;
 import movierecsys.gui.model.MovieModel;
+import movierecsys.gui.model.MovieModel1;
 
 /**
  *
@@ -62,6 +64,8 @@ public class MovieRecController implements Initializable {
     @FXML
     private Button btnMovieOptionsScreen;
 
+    MovieModel1 model;
+    
     public MovieRecController() {
         try {
             movieModel = new MovieModel();
@@ -74,7 +78,7 @@ public class MovieRecController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         lstMovies.setItems(movieModel.getMovies());
-
+        model = new MovieModel1();
     }
 
     private void displayError(MovieRecSysException ex) {
@@ -113,6 +117,8 @@ public class MovieRecController implements Initializable {
     private void goodMain(ActionEvent event)
     {
     }
+    
+   
 
     @FXML
     private void superGoodMain(ActionEvent event)
@@ -123,18 +129,28 @@ public class MovieRecController implements Initializable {
     private void ratingOptionScreenEnter(ActionEvent event) throws IOException
     {
         Stage stage = (Stage) MainBorderPane.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/movierecsys/gui/view/RatingRecView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/movierecsys/gui/view/RatingRecView.fxml"));
+        Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene (scene);
+        
+        RatingRecViewController ratingRecViewController = loader.getController();
+        model.setSelected(lstMovies.getSelectionModel().getSelectedItem());
+        ratingRecViewController.setModel(model);
     }
-
+    
     @FXML
     private void movieOptionScreenEnter(ActionEvent event) throws IOException
     {
         Stage stage = (Stage) MainBorderPane.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/movierecsys/gui/view/MovieOptionRecView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/movierecsys/gui/view/MovieOptionRecView.fxml"));
+        Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene (scene);
+        
+        MovieOptionRecViewController optionRecViewController = loader.getController();
+        model.setSelected(lstMovies.getSelectionModel().getSelectedItem());
+        optionRecViewController.setModelOption(model);
     }
 
 }

@@ -5,18 +5,39 @@
  */
 package movierecsys.gui.model;
 
+import movierecsys.be.Movie;
+
 /**
  *
  * @author Bruger
  */
 public class MovieModel1
 {
-//    MovieSelectedMovie;
-//    
-//    
-//    public MovieModel(Movie selected)
-//    {
-//        selectedMovie = selected;
-//    }
-//    
+    
+
+    
+
+        private Movie selected;
+
+    /**
+     * Get the value of selected
+     *
+     * @return the value of selected
+     */
+    public Movie getSelected()
+    {
+        return selected;
+    }
+
+    /**
+     * Set the value of selected
+     *
+     * @param selected new value of selected
+     */
+    public void setSelected(Movie selected)
+    {
+        this.selected = selected;
+    }
+
+    
 }
