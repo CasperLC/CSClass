@@ -19,7 +19,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import movierecsys.dal.MovieDAO;
+import movierecsys.be.Movie;
+import movierecsys.bll.exception.MovieRecSysException;
 import movierecsys.gui.model.MovieModel1;
 
 /**
@@ -41,11 +42,23 @@ public class MovieOptionRecViewController implements Initializable
     @FXML
     private TextField txtMovieAdd;
     @FXML
-    private TextField txtMovieYear;
-    @FXML
     private Label lblMovieOption;
     
     private MovieModel1 modelOption;
+    @FXML
+    private TextField txtAddMovieYear;
+    @FXML
+    private Label lblAddSuccess;
+    @FXML
+    private Label lblUpdateSuccess;
+    @FXML
+    private Label lblDeleteSuccess;
+    @FXML
+    private Button btnUpdateMovie;
+    @FXML
+    private TextField txtUpdateTitle;
+    @FXML
+    private TextField txtUpdateYear;
 
     /**
      * Initializes the controller class.
@@ -66,37 +79,34 @@ public class MovieOptionRecViewController implements Initializable
     }
 
     @FXML
-    private void btnaddMovie(ActionEvent event) throws IOException
+    private void btnaddMovie(ActionEvent event) throws IOException, MovieRecSysException
     {
         String movieTitle = txtMovieAdd.getText();
-        int movieYear = Integer.parseInt(txtMovieYear.getText());
-        MovieDAO moviedao = new MovieDAO();
-        moviedao.createMovie(movieYear, movieTitle);
+        int movieYear = Integer.parseInt(txtAddMovieYear.getText());
+        modelOption.createMovie(movieYear, movieTitle);
+        lblAddSuccess.setText("The movie has been successfully added");
         
     }
 
     @FXML
     private void btnRemoveMovie(ActionEvent event)
     {
+        modelOption.deleteMovie();
+        lblDeleteSuccess.setText("The movie has been successfully removed");
         
     }
 
-    @FXML
-    private void movieAddText(ActionEvent event)
-    {
-        
-    }
-
-    @FXML
-    private void movieYearText(ActionEvent event)
-    {
-       
-    }
 
     void setModelOption(MovieModel1 model)
     {
         this.modelOption = model;
         lblMovieOption.setText(model.getSelected().getTitle());
+    }
+
+    @FXML
+    private void handleUpdate(ActionEvent event) {
+        modelOption.updateMovie(Integer.parseInt(txtUpdateYear.getText()), txtUpdateTitle.getText());
+        lblUpdateSuccess.setText("The movie has been successfully updated");
     }
     
 }

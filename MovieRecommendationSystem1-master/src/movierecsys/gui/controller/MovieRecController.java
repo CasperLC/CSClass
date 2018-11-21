@@ -9,6 +9,8 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,7 +44,7 @@ public class MovieRecController implements Initializable {
     @FXML
     private ListView<Movie> lstMovies;
 
-    private MovieModel movieModel;
+
     @FXML
     private Button btnSearch;
     @FXML
@@ -68,7 +70,7 @@ public class MovieRecController implements Initializable {
     
     public MovieRecController() {
         try {
-            movieModel = new MovieModel();
+            model = new MovieModel1();
         } catch (MovieRecSysException ex) {
             displayError(ex);
             System.exit(0);
@@ -77,8 +79,12 @@ public class MovieRecController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        lstMovies.setItems(movieModel.getMovies());
-        model = new MovieModel1();
+        lstMovies.setItems(model.getMovies());
+        try {
+            model = new MovieModel1();
+        } catch (MovieRecSysException ex) {
+            Logger.getLogger(MovieRecController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void displayError(MovieRecSysException ex) {
@@ -89,13 +95,13 @@ public class MovieRecController implements Initializable {
     @FXML
     private void btnSearchEnter(ActionEvent event) throws MovieRecSysException {
         String searchInput = txtMovieSearch.getText();
-        lstMovies.setItems(movieModel.getSearch(searchInput));
+        lstMovies.setItems(model.getSearch(searchInput));
     }
 
     @FXML
     private void txtEnterSearch(ActionEvent event) throws MovieRecSysException {
         String searchInput = txtMovieSearch.getText();
-        lstMovies.setItems(movieModel.getSearch(searchInput));
+        lstMovies.setItems(model.getSearch(searchInput));
     }
 
     @FXML
