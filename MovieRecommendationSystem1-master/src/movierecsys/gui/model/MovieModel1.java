@@ -5,9 +5,15 @@
  */
 package movierecsys.gui.model;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import movierecsys.be.Movie;
+import movierecsys.be.Rating;
+import movierecsys.be.User;
 import movierecsys.bll.MRSManager;
 import movierecsys.bll.OwsLogicFacade;
 import movierecsys.bll.exception.MovieRecSysException;
@@ -16,10 +22,10 @@ import movierecsys.bll.exception.MovieRecSysException;
  *
  * @author Bruger
  */
-
 public class MovieModel1 {
 
     private Movie selected;
+    private User loggedInUser;
     private ObservableList<Movie> movies;
     private OwsLogicFacade logiclayer;
 
@@ -27,6 +33,7 @@ public class MovieModel1 {
         movies = FXCollections.observableArrayList();
         logiclayer = new MRSManager();
         movies.addAll(logiclayer.getAllMovies());
+        loggedInUser = logiclayer.getUserById(7);
 
     }
 
@@ -57,6 +64,33 @@ public class MovieModel1 {
     public void deleteMovie() {
         Movie movieToRemove = getSelected();
         logiclayer.deleteMovie(movieToRemove);
+    }
+
+    public void rateMovie(int rating) {
+        logiclayer.rateMovie(selected, loggedInUser, rating);
+    }
+
+    public void deleteRating() throws IOException {
+        Rating deleted;
+        int rating = specificRating().getRating();
+        deleted = new Rating(selected.getId(), loggedInUser.getId(), rating);
+        logiclayer.deleteRating(deleted);
+    }
+
+    public ObservableList<Rating> myRatings() {
+        ObservableList<Rating> myRatings;
+        myRatings = FXCollections.observableArrayList();
+        try {
+            myRatings.addAll(logiclayer.getMyRatings(loggedInUser));
+        } catch (IOException ex) {
+            Logger.getLogger(MovieModel1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return myRatings;
+    }
+
+    public Rating specificRating() throws IOException {
+        Rating specific = logiclayer.getSpecificRating(selected, loggedInUser);
+        return specific;
     }
 
     /**
@@ -100,6 +134,18 @@ public class MovieModel1 {
      */
     public void setSelected(Movie selected) {
         this.selected = selected;
+    }
+
+    public User getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public void setLoggedInUser(User login) {
+        this.loggedInUser = login;
+    }
+
+    public String getUsername() {
+        return loggedInUser.getName();
     }
 
 }

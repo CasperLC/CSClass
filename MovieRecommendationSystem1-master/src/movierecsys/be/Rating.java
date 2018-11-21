@@ -71,10 +71,32 @@ public class Rating {
     public int getRating() {
         return rating;
     }
-       
+
+    public String viewRating() {
+        int viewRating = getRating();
+        String viewableRating = null;
+        if (viewRating == -5) {
+            viewableRating = Integer.toString(viewRating).replace("-5", "1");
+        }
+        if (viewRating == -3) {
+            viewableRating = Integer.toString(viewRating).replace("-3", "2");
+        }
+        if (viewRating == 1) {
+            viewableRating = Integer.toString(viewRating).replace("1", "3");
+        }
+        if (viewRating == 3) {
+            viewableRating = Integer.toString(viewRating).replace("3", "4");
+        }
+        if (viewRating == 5) {
+            viewableRating = Integer.toString(viewRating);
+        }
+
+        return viewableRating + " out of 5";
+    }
+
     @Override
     public String toString() {
-        return "MovieID: "+movieId+", UserID: "+userId+", Rating: "+rating;
+        return "MovieID: " + movieId + ", UserID: " + userId + ", Rating: " + rating;
     }
 
 }

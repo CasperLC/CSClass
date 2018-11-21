@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -53,21 +54,13 @@ public class MovieRecController implements Initializable
     @FXML
     private BorderPane MainBorderPane;
     @FXML
-    private Button btnSuperBadMain;
-    @FXML
-    private Button btnBadMain;
-    @FXML
-    private Button btnNeutralMain;
-    @FXML
-    private Button btnGoodMain;
-    @FXML
-    private Button btnSuperGoodMain;
-    @FXML
     private Button btnRatingOptionScreen;
     @FXML
     private Button btnMovieOptionsScreen;
 
     MovieModel1 model;
+    @FXML
+    private Label lblLoggedInUser;
     
     public MovieRecController() {
         try {
@@ -81,6 +74,7 @@ public class MovieRecController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         lstMovies.setItems(model.getMovies());
+        lblLoggedInUser.setText("Logged in as:"+model.getUsername());
         try {
             model = new MovieModel1();
         } catch (MovieRecSysException ex) {
@@ -108,30 +102,6 @@ public class MovieRecController implements Initializable
         lstMovies.setItems(model.getSearch(searchInput));
     }
 
-    @FXML
-    private void mainSuperBad(ActionEvent event)
-    {
-    }
-
-    @FXML
-    private void badMain(ActionEvent event)
-    {
-    }
-
-    @FXML
-    private void neutralMain(ActionEvent event)
-    {
-    }
-
-    @FXML
-    private void goodMain(ActionEvent event)
-    {
-    }
-
-    @FXML
-    private void superGoodMain(ActionEvent event)
-    {
-    }
 
     @FXML
     private void ratingOptionScreenEnter(ActionEvent event) throws IOException

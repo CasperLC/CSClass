@@ -5,6 +5,7 @@
  */
 package movierecsys.bll;
 
+import java.io.IOException;
 import java.util.List;
 import movierecsys.be.Movie;
 import movierecsys.be.Rating;
@@ -74,6 +75,28 @@ public interface OwsLogicFacade
      * @param rating The rating score of the movie
      */
     void rateMovie(Movie movie, User user, int rating);
+    /**
+     * deletes rating for the chosen movie
+     * @param rating the rating to be removed
+     */
+    void deleteRating(Rating rating);
+    
+    /**
+     * Gets the ratings for the current user
+     * @param user the current logged in user
+     * @return list of ratings from current user
+     * @throws IOException 
+     */
+    List<Rating> getMyRatings(User user) throws IOException;
+    
+    /**
+     * Gets a requested rating
+     * @param movie selected movie
+     * @param user logged in user
+     * @return the requested rating object
+     * @throws IOException 
+     */
+    Rating getSpecificRating(Movie movie, User user) throws IOException;
 
     /**
      * Create a new user in the system.

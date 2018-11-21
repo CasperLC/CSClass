@@ -80,13 +80,11 @@ public class MRSManager implements OwsLogicFacade {
 
     @Override
     public Movie createMovie(int year, String title) {
-        
+
         Movie newMovie = null;
-        try
-        {
+        try {
             newMovie = movieDAO.createMovie(year, title);
-        } catch (IOException ex)
-        {
+        } catch (IOException ex) {
             Logger.getLogger(MRSManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return newMovie;
@@ -94,45 +92,64 @@ public class MRSManager implements OwsLogicFacade {
 
     @Override
     public void updateMovie(Movie movie) {
-        try
-        {
+        try {
             movieDAO.updateMovie(movie);
-        } catch (IOException ex)
-        {
+        } catch (IOException ex) {
             Logger.getLogger(MRSManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public void deleteMovie(Movie movie) {
-        try
-        {
+        try {
             movieDAO.deleteMovie(movie);
-        } catch (IOException ex)
-        {
+        } catch (IOException ex) {
             Logger.getLogger(MRSManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public void rateMovie(Movie movie, User user, int rating) {
-        try
-        {
+        try {
             ratingDAO.createRating(new Rating(movie.getId(), user.getId(), rating));
-        } catch (IOException ex)
-        {
+        } catch (IOException ex) {
             Logger.getLogger(MRSManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
+    public void deleteRating(Rating rating) {
+        try {
+            ratingDAO.deleteRating(rating);
+        } catch (IOException ex) {
+            Logger.getLogger(MRSManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public List<Rating> getMyRatings(User user) throws IOException {
+        List<Rating> myRatingsList = ratingDAO.getRatings(user);
+        return myRatingsList;
+    }
+
+    @Override
+    public Rating getSpecificRating(Movie movie, User user) throws IOException {
+        List<Rating> specific = ratingDAO.getRatings(user);
+        Rating specificRating = null;
+        for (Rating rating : specific) {
+            if (movie.getId() == rating.getMovie()) {
+                specificRating = new Rating(rating.getMovie(), rating.getUser(), rating.getRating());
+            }
+        }
+        return specificRating;
+    }
+
+    @Override
     public User createNewUser(String name) {
         User nUser = null;
-        try
-        {
+        try {
             nUser = userDAO.createUser(name);
-        } catch (IOException ex)
-        {
+        } catch (IOException ex) {
             Logger.getLogger(MRSManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return nUser;
@@ -141,11 +158,9 @@ public class MRSManager implements OwsLogicFacade {
     @Override
     public User getUserById(int id) {
         User theUser = null;
-        try
-        {
+        try {
             theUser = userDAO.getUser(id);
-        } catch (IOException ex)
-        {
+        } catch (IOException ex) {
             Logger.getLogger(MRSManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return theUser;
@@ -154,11 +169,9 @@ public class MRSManager implements OwsLogicFacade {
     @Override
     public List<User> getAllUsers() {
         List<User> allUsersList = new ArrayList<>();
-        try
-        {
+        try {
             allUsersList.addAll(userDAO.getAllUsers());
-        } catch (IOException ex)
-        {
+        } catch (IOException ex) {
             Logger.getLogger(MRSManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return allUsersList;

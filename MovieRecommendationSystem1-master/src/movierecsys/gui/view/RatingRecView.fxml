@@ -9,20 +9,40 @@
 <AnchorPane id="AnchorPane" fx:id="RatingBorderPane" prefHeight="604.0" prefWidth="472.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movierecsys.gui.controller.RatingRecViewController">
    <children>
       <Button fx:id="btnXRatingBack" layoutX="429.0" layoutY="14.0" mnemonicParsing="false" onAction="#xRatingBack" prefHeight="0.0" prefWidth="29.0" text="X" />
-      <Button fx:id="btnChangeRating" layoutX="179.0" layoutY="182.0" mnemonicParsing="false" onAction="#btnChangeRating" text="Change rating" />
-      <Button fx:id="btnDeleteRating" layoutX="183.0" layoutY="344.0" mnemonicParsing="false" onAction="#btndeleteRating" text="Delete rating" />
-      <HBox layoutX="74.0" layoutY="244.0">
+      <Button fx:id="btnDeleteRating" layoutX="185.0" layoutY="310.0" mnemonicParsing="false" onAction="#btndeleteRating" text="Delete rating" />
+      <HBox layoutX="49.0" layoutY="198.0">
          <children>
-            <Button fx:id="btnRatingSuperBadOption" mnemonicParsing="false" onAction="#superBadRatingOption" text="SuperBad" />
-            <Button fx:id="btnRatingBadOption" mnemonicParsing="false" onAction="#ratingBadOption" text="bad" />
-            <Button fx:id="btnRatingNeutralOption" mnemonicParsing="false" onAction="#ratingNeutralOption" text="neutral" />
-            <Button fx:id="btnRatingGoodOption" mnemonicParsing="false" onAction="#ratingGoodOption" text="good" />
-            <Button fx:id="btnRatingSuperGoodOption" mnemonicParsing="false" onAction="#ratingSuperGoodOption" text="SuperGood" />
+            <Button fx:id="btnRatingSuperBadOption" mnemonicParsing="false" onAction="#superBadRatingOption" prefHeight="22.0" prefWidth="70.0" text="SuperBad" />
+            <Button fx:id="btnRatingBadOption" mnemonicParsing="false" onAction="#ratingBadOption" prefHeight="22.0" prefWidth="70.0" text="bad" />
+            <Button fx:id="btnRatingNeutralOption" mnemonicParsing="false" onAction="#ratingNeutralOption" prefHeight="22.0" prefWidth="70.0" text="neutral" />
+            <Button fx:id="btnRatingGoodOption" mnemonicParsing="false" onAction="#ratingGoodOption" prefHeight="22.0" prefWidth="70.0" text="good" />
+            <Button fx:id="btnRatingSuperGoodOption" mnemonicParsing="false" onAction="#ratingSuperGoodOption" prefHeight="22.0" prefWidth="70.0" text="SuperGood" />
          </children>
       </HBox>
-      <Label fx:id="lblChangeRating" alignment="CENTER" layoutX="88.0" layoutY="58.0" prefHeight="21.0" prefWidth="296.0" text="Label" textAlignment="CENTER">
+      <Label fx:id="lblSelectedMovie" alignment="CENTER" layoutX="14.0" layoutY="118.0" prefHeight="25.0" prefWidth="445.0" text="None" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="20.0" />
          </font></Label>
+      <Label alignment="CENTER" layoutX="14.0" layoutY="93.0" prefHeight="25.0" prefWidth="445.0" text="Currently Selected Movie:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="14.0" layoutY="272.0" prefHeight="25.0" prefWidth="445.0" text="Delete your current rating for this movie:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="185.0" layoutY="184.0" text="Rate the movie!" />
+      <Label fx:id="lblSuccessRated" alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="220.0" prefHeight="22.0" prefWidth="350.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblSuccessDeletedRating" alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="332.0" prefHeight="22.0" prefWidth="350.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

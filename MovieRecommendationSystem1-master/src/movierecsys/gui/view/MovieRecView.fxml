@@ -32,14 +32,19 @@
       </VBox>
    </top>
    <center>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="536.0" prefWidth="472.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefWidth="200.0">
+            <HBox prefHeight="16.0" prefWidth="472.0">
                <children>
                   <Button fx:id="btnRatingOptionScreen" mnemonicParsing="false" onAction="#ratingOptionScreenEnter" prefWidth="236.0" text="Rating options" />
                   <Button fx:id="btnMovieOptionsScreen" mnemonicParsing="false" onAction="#movieOptionScreenEnter" prefWidth="236.0" text="Movie options" />
                </children>
             </HBox>
+            <Label fx:id="lblLoggedInUser" alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="473.0" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
             <TextField fx:id="txtMovieSearch" onAction="#txtEnterSearch" prefHeight="30.0" prefWidth="410.0" promptText="search movies" />
             <Button fx:id="btnSearch" alignment="CENTER" mnemonicParsing="false" onAction="#btnSearchEnter" prefHeight="31.0" prefWidth="160.0" text="Search movie">
                <VBox.margin>
@@ -59,23 +64,7 @@
             </Button>
             <HBox />
             <ListView fx:id="lstMovies" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="401.0" prefWidth="417.0" VBox.vgrow="ALWAYS" />
-            <Label prefHeight="21.0" prefWidth="472.0" text="                             Rate the movie">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
          </children>
       </VBox>
    </center>
-   <bottom>
-      <HBox BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="btnSuperBadMain" maxWidth="200.0" mnemonicParsing="false" onAction="#mainSuperBad" prefWidth="100.0" text="SuperBad" />
-            <Button fx:id="btnBadMain" mnemonicParsing="false" onAction="#badMain" prefHeight="31.0" prefWidth="90.0" text="Bad" />
-            <Button fx:id="btnNeutralMain" mnemonicParsing="false" onAction="#neutralMain" prefWidth="92.0" text="Neutral" />
-            <Button fx:id="btnGoodMain" mnemonicParsing="false" onAction="#goodMain" prefWidth="90.0" text="good" />
-            <Button fx:id="btnSuperGoodMain" mnemonicParsing="false" onAction="#superGoodMain" prefWidth="100.0" text="SuperGood" />
-         </children>
-      </HBox>
-   </bottom>
 </BorderPane>
