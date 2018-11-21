@@ -44,7 +44,7 @@ public class MovieOptionRecViewController implements Initializable
     private TextField txtMovieYear;
     @FXML
     private Label lblMovieOption;
-    
+
     private MovieModel1 modelOption;
 
     /**
@@ -54,7 +54,7 @@ public class MovieOptionRecViewController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
     {
         // TODO
-    }    
+    }
 
     @FXML
     private void xMovieBack(ActionEvent event) throws IOException
@@ -62,8 +62,8 @@ public class MovieOptionRecViewController implements Initializable
         Stage stage = (Stage) MovieBorderPane.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/movierecsys/gui/view/MovieRecView.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene (root);
-        stage.setScene (scene);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 
     @FXML
@@ -73,25 +73,25 @@ public class MovieOptionRecViewController implements Initializable
         int movieYear = Integer.parseInt(txtMovieYear.getText());
         MovieDAO moviedao = new MovieDAO();
         moviedao.createMovie(movieYear, movieTitle);
-        
+
     }
 
     @FXML
     private void btnRemoveMovie(ActionEvent event)
     {
-        
+
     }
 
     @FXML
     private void movieAddText(ActionEvent event)
     {
-        
+
     }
 
     @FXML
     private void movieYearText(ActionEvent event)
     {
-       
+
     }
 
     void setModelOption(MovieModel1 model)
@@ -99,5 +99,5 @@ public class MovieOptionRecViewController implements Initializable
         this.modelOption = model;
         lblMovieOption.setText(model.getSelected().getTitle());
     }
-    
+
 }

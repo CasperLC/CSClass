@@ -50,9 +50,8 @@ public class RatingRecViewController implements Initializable
     @FXML
     private Label lblChangeRating;
 
-    
     private MovieModel1 model;
-    
+
     /**
      * Initializes the controller class.
      */
@@ -60,7 +59,7 @@ public class RatingRecViewController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
     {
         // TODO
-    }    
+    }
 
     @FXML
     private void xRatingBack(ActionEvent event) throws IOException
@@ -68,11 +67,11 @@ public class RatingRecViewController implements Initializable
         Stage stage = (Stage) RatingBorderPane.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/movierecsys/gui/view/MovieRecView.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene (root);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
-        
+
     }
-      
+
     @FXML
     private void btnChangeRating(ActionEvent event)
     {
@@ -118,5 +117,5 @@ public class RatingRecViewController implements Initializable
         this.model = model;
         lblChangeRating.setText(model.getSelected().getTitle());
     }
-    
+
 }
