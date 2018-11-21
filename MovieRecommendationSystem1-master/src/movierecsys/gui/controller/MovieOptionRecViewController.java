@@ -60,7 +60,8 @@ public class MovieOptionRecViewController implements Initializable
     private void xMovieBack(ActionEvent event) throws IOException
     {
         Stage stage = (Stage) MovieBorderPane.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/movierecsys/gui/view/MovieRecView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/movierecsys/gui/view/MovieRecView.fxml"));
+        Parent root = loader.load();
         Scene scene = new Scene (root);
         stage.setScene (scene);
     }

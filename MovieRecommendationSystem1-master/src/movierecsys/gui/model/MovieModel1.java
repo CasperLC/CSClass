@@ -13,11 +13,8 @@ import movierecsys.be.Movie;
  */
 public class MovieModel1
 {
-    
 
-    
-
-        private Movie selected;
+    private Movie selected;
 
     /**
      * Get the value of selected
@@ -39,5 +36,4 @@ public class MovieModel1
         this.selected = selected;
     }
 
-    
 }
